@@ -1,0 +1,225 @@
+.settings {
+  margin-top: 100px;
+  padding: 0px 30px;
+  padding-bottom: 50px;
+  transition: 0.3s;
+}
+
+.settings__wrapper {
+  padding: 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  transition: 0.3s;
+}
+
+.settings__title {
+  color: var(--heading-color);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.settings__top {
+  color: var(--small-text-color);
+  display: flex;
+  align-items: center;
+  column-gap: 2.7rem;
+  margin-bottom: 1.5rem;
+  transition: 0.5s;
+}
+
+.setting__btn {
+  border: none;
+  border: none;
+  padding: 7px 25px;
+  background: transparent;
+  border-radius: 5px;
+  color: var(--heading-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.active__btn {
+  background: #b7ffe913;
+}
+
+.profile__title {
+  color: var(--heading-color);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile__desc {
+  color: var(--small-text-color);
+  margin-bottom: 2rem;
+}
+
+label {
+  color: var(--heading-color);
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.form__group div {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form__group div input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #b7ffe913;
+  color: var(--heading-color);
+  font-size: 1rem;
+}
+
+.form__group div input::placeholder {
+  color: var(--small-text-color);
+  font-size: 0.9rem;
+}
+
+.form__group div input:focus {
+  outline: none;
+}
+
+.profile-img__desc {
+  color: var(--small-text-color);
+  margin-bottom: 10px;
+}
+
+.profile__img-btns {
+  display: flex;
+  flex-direction: row !important;
+  column-gap: 2.7rem;
+}
+
+.dlt__btn,
+.update__btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ddd;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.update__btn {
+  color: var(--secondary-color);
+}
+
+.primary-button {
+  background-color: #007bff; /* Primary color (blue) */
+  color: #fff; /* Text color (white) */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+  /* Hover Effect */
+  &:hover {
+    background-color: #0056b3; /* Darker shade of primary color */
+  }
+}
+.success-button {
+  background-color: #28a745; /* Success color (green) */
+  color: #fff; /* Text color (white) */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+  /* Hover Effect */
+  &:hover {
+    background-color: #218838; /* Darker shade of success color */
+  }
+}
+
+.warning-button {
+  background-color: #ffc107; /* Warning color (yellow) */
+  color: #212529; /* Text color (black) */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+  /* Hover Effect */
+  &:hover {
+    background-color: #e0a800; /* Darker shade of warning color */
+  }
+}
+
+.formatted-price {
+    /* Your CSS styles for the formatted price display */
+    /* For example: */
+    color: var (-small-text-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.manage-parkings {
+  padding: 10px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: var (-small-text-color);
+
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.success-message{
+  color: #db6c6c;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.carpark-management li{
+  color: var(--small-text-color);
+  font-family: 'remixicon' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #b7ffe913;
+}
+
+.showRealtimeManagement tr:hover{
+  color: var(--secondary-color);
+}
+
+.settings .filter {
+  margin-bottom: 15px; /* Add margin to separate from other elements */
+}
+
+/* Style for the label */
+.settings .filter label {
+  margin-right: 10px; /* Add some spacing between the label and the dropdown */
+}
+
+/* Style for the select dropdown */
+.settings .filter select {
+  width: 200px; /* Set a fixed width for consistency */
+}
+
+/* Style for the loading message */
+.settings .loading {
+  font-style: italic; /* Italicize the text */
+  color: #888; /* Gray color */
+}
