@@ -16,12 +16,22 @@
 .modal1-content {
     background-color: #fefefe;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50%; /* Adjust the width here (e.g., 50% for half the size) */
-    height: 50%; /* Adjust the height here (e.g., 50% for half the size) */
+    width: 80%; /* Adjust the width here (e.g., 50% for half the size) */
+    height: 1000px; /* Adjust the height here (e.g., 50% for half the size) */
     max-width: 400px; /* Add a max-width to prevent it from becoming too wide */
-    max-height: 300px; /* Add a max-height to prevent it from becoming too tall */
+    max-height: 400px; /* Add a max-height to prevent it from becoming too tall */
+   .form-group{
+        align-items: center;
+    }
+    
+    .h2{
+        text-align: center;
+    }
+    .form-control{
+        text-align: center;
+    }
 }
 
 .close1 {
@@ -47,10 +57,12 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    align-items: center;
+
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #2983e4;
 }
