@@ -1,10 +1,28 @@
-import React from "react";
+// import React from "react";
+import CarItem from "./CarItem";
+import React, { useState, useEffect } from "react";
+import { db, ref, onValue } from "../../firebase.js";
 
 const RecommendCarCard = (props) => {
-  const { carName, retweet, imgUrl, rentPrice, percentage } = props.item;
+  // const { carName, retweet, imgUrl, rentPrice, percentage } = props.item;
+
+  const [InputValues, setInputValues] = useState([]);
+
+  useEffect(() => {
+    onValue(ref(db), (snapshot) => {
+      setInputValues([]);
+      const data = snapshot.val();
+      if (data !== null) {
+        Object.values(data).map((carName) => {
+          setInputValues((oldArray) => [...oldArray, carName]);
+        });
+      }
+    });
+  }, [setInputValues]);
+
   return (
     <div className="recommend__car-card">
-      <div className="recommend__car-top">
+      {/* <div className="recommend__car-top">
         <h5>
           <span>
             <i class="ri-refresh-line"></i>
@@ -33,7 +51,14 @@ const RecommendCarCard = (props) => {
           </div>
           <span>rs.{rentPrice}/h</span>
         </div>
-      </div>
+      </div> */}
+   
+
+<div className="AllParkings__list" >
+          {InputValues?.map((car) => (
+            <CarItem item={car} key={car.carName} />
+          ))}
+        </div>
     </div>
   );
 };

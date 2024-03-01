@@ -2,11 +2,11 @@ import "../styles/dashboard.css";
 import SingleCard from "../components/reuseable/SingleCard";
 import MileChart from "../charts/MileChart";
 import CarStatsChart from "../charts/CarStatsChart";
-// import RecommendCarCard from "../components/UI/RecommendCarCard";
-// import recommendCarsData from "../assets/dummy-data/recommendCars";
+import RecommendCarCard from "../components/UI/RecommendCarCard";
+import recommendCarsData from "../assets/dummy-data/recommendCars";
 import React, { useState, useEffect } from "react";
 import { db, ref, onValue } from "../firebase.js";
-import CarItem from "../components/UI/CarItem";
+// import CarItem from "../components/UI/CarItem";
 
 
 const carObj = {
@@ -106,19 +106,20 @@ const Dashboard = () => {
 
 ///available parking shoe in the dashboard 
 
-  const [InputValues, setInputValues] = useState([]);
+// const [InputValues, setInputValues] = useState([]);
 
-  useEffect(() => {
-    onValue(ref(db), (snapshot) => {
-      setInputValues([]);
-      const data = snapshot.val();
-      if (data !== null) {
-        Object.values(data).map((carName) => {
-          setInputValues((oldArray) => [...oldArray, carName]);
-        });
-      }
-    });
-  }, [setInputValues]);
+// useEffect(() => {
+//   onValue(ref(db), (snapshot) => {
+//     setInputValues([]);
+//     const data = snapshot.val();
+//     if (data !== null) {
+//       Object.values(data).map((carName) => {
+//         setInputValues((oldArray) => [...oldArray, carName]);
+//       });
+//     }
+//   });
+// }, [setInputValues]);
+ 
 
   return (
     <div className="dashboard">
@@ -143,12 +144,13 @@ const Dashboard = () => {
         </div>
 
         <div className="recommend__cars-wrapper">
-          {/* {recommendCarsData.map((item) => (
+          {recommendCarsData.map((item) => (
             <RecommendCarCard item={item} key={item.id} />
-          ))} */}
-           {InputValues?.map((car) => (
-            <CarItem item={car} key={car.carName} />
           ))}
+          
+           {/* {InputValues?.map((car) => (
+            <CarItem item={car} key={car.carName} />
+          ))} */}
         </div>
       </div>
     </div>
