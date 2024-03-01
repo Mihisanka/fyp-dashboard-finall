@@ -97,12 +97,13 @@
   font-size: 1.1rem;
 }
 
-.booking__car-list {
+.AllParkings__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 2rem;
   row-gap: 2rem;
   color: #252424;
+  border-radius: 25%;
 }
 
 .park_item-tile h3 {

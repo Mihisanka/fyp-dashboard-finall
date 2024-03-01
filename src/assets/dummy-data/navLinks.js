@@ -9,16 +9,16 @@ const navLinks = [
     icon: "ri-taxi-line",
     display: "All Parkings",
   },
-  {
-    path: "/Summry",
-    icon: "ri-shopping-bag-line",
-    display: "Parking",
-  },
-  {
-    path: "/settings",
-    icon: "ri-settings-2-line",
-    display: "Settings",
-  },
+  // {
+  //   path: "/Summry",
+  //   icon: "ri-shopping-bag-line",
+  //   display: "Parking",
+  // },
+  // {
+  //   path: "/settings",
+  //   icon: "ri-settings-2-line",
+  //   display: "Settings",
+  // },
   {
     path: "/AddCarPark",
     icon: "ri-admin-line", 

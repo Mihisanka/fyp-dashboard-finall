@@ -8,9 +8,6 @@ import { getDatabase, ref, onValue, remove, update } from "firebase/database"; /
 // Assuming you're using Firebase v9 modular SDK, which uses `getDatabase` instead of `database`
 const database = getDatabase();
 
-// Your component code here
-
-
 // const [carName, setCarName] = useState("");
 // const [category, setcategory] = useState("");
 // const [type, settype] = useState("");
@@ -36,7 +33,7 @@ const Bookings = () => {
     <div className="AllParkings">
       <div className="AllParkings__wrapper">
         <h2 className="AllParkings__title">All Parkings</h2>
-        <div className="booking__car-list" >
+        <div className="AllParkings__list" >
           {InputValues?.map((car) => (
             <CarItem item={car} key={car.carName} />
           ))}
