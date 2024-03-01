@@ -1,15 +1,16 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, remove, set } from "firebase/database";
 import { getStorage } from "firebase/storage";
-import firebase from "firebase/compat/app"; 
+// import firebase from "E:/4 year/FYP_SLTC/Codes/Dashboard/fyp-Dashborad-fainall/src/firebase.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqcbWAghpABuVE7gsCX6Eg0X2VkhfDXzk",
-  authDomain: "crud-31c78.firebaseapp.com",
-  projectId: "crud-31c78",
-  storageBucket: "crud-31c78.appspot.com",
-  messagingSenderId: "525592678428",
-  appId: "1:525592678428:web:5301395b101a6e3d9c8fd9"
+  apiKey: "AIzaSyCOZVGBBTUmQC-M9sroX2y5QKJ_sQK_NDQ",
+  authDomain: "dashboard-fyp-cf016.firebaseapp.com",
+  projectId: "dashboard-fyp-cf016",
+  storageBucket: "dashboard-fyp-cf016.appspot.com",
+  messagingSenderId: "268600986524",
+  appId: "1:268600986524:web:731f83a7d8a3a7026a9659",
+  measurementId: "G-4LPEW81K1L"
 };
 // Initialize Firebase app
 // Initialize Firebase app
