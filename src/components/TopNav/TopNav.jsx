@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import profileImg from "../../assets/images/profile-02.png";
 import "./top-nav.css";
@@ -20,7 +19,7 @@ const TopNav = () => {
             <span className="badge">1</span>
           </span>
           <div className="profile">
-            <Link to="/settings">
+            <Link to="/Login"> 
               <img src={profileImg} alt="" />
             </Link>
           </div>

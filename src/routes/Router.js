@@ -6,6 +6,8 @@ import Summry from "../pages/Summry";
 import Settings from "../pages/Settings";
 import AddCarPark from "../pages/AddCarPark";
 import Mapcomponent from "../pages/Mapcomponent";
+import Login from "../pages/Login";
+
 //import User from "./users/User";
 
 function Router() {
@@ -19,6 +21,7 @@ function Router() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/AddCarPark" element={<AddCarPark />} />
       <Route path="/Mapcomponent" element={<Mapcomponent />} />
+      <Route path="/Login" element={<Login />} />
       
       
     </Routes>
