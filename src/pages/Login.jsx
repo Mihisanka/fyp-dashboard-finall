@@ -1,5 +1,4 @@
 
-
 import React, { useState } from "react";
 import "../styles/Login.css";
 import { Link } from 'react-router-dom';
@@ -35,8 +34,9 @@ const Login = () => {
 
   return (
     <div class="log-body">
+      <center>
           <div class="log-container">
-               <center>
+               
                     <div class="log-head">
                           <span>Sign up</span>
                           <p>Create a free account with your email.</p>
@@ -50,11 +50,14 @@ const Login = () => {
                       </input>
                       </div>
                     <button className="lg-bt" onClick={login}>SignIn</button>
-                    </center> 
+                   
                   <div class="log-form-footer"> 
                 <p>Don't have an account? <Link to='/Settings'>Sign Up</Link> </p>
+                
             </div>
+          
         </div>
+        </center> 
 
     </div>
   );

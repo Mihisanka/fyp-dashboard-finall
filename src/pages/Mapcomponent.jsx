@@ -152,7 +152,7 @@ import { MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBBtn } from '
 
 const Mapcomponent = () => {
   const [carparkData, setCarparkData] = useState([]);
-  const [error, setError] = useState(null);
+  const [ setError] = useState(null);//error,
   const [filter, setFilter] = useState('all');
   const [showModal, setShowModal] = useState(true);
 

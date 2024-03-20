@@ -51,6 +51,7 @@
 }
 
 .profile img {
+  margin-left: 1300px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -61,6 +62,7 @@
 }
 
 .notification i {
+  
   color: var(--small-text-color);
   font-size: 1.2rem;
   cursor: pointer;
