@@ -1,5 +1,5 @@
 import "../styles/settings.css";
-import { db } from "../firebase";
+import { db_admin } from "../firebase";
 import React, { useState, useEffect } from "react";
 import { set, ref, onValue } from "firebase/database";
 import RealtimeManagement from "../components/UI/RealtimeManagement"; // Import RealtimeManagement component
@@ -20,7 +20,7 @@ const AddCarPark = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const carparkRef = ref(db);
+            const carparkRef = ref(db_admin);
             onValue(carparkRef, (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
@@ -86,7 +86,7 @@ const AddCarPark = () => {
             return;
         }
 
-        await set(ref(db, `/${count}`), {
+        await set(ref(db_admin, `/${count}`), {
             carparkName,
             address,
             capacity,

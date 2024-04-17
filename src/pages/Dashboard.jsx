@@ -5,7 +5,8 @@ import CarStatsChart from "../charts/CarStatsChart";
 import RecommendCarCard from "../components/UI/RecommendCarCard";
 import recommendCarsData from "../assets/dummy-data/recommendCars";
 import React, { useState, useEffect } from "react";
-import { db, ref, onValue } from "../firebase.js";
+import { db_admin, ref, onValue } from "../firebase.js";
+
 // import CarItem from "../components/UI/CarItem";
 
 
@@ -41,7 +42,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      const carparkRef = ref(db);
+      const carparkRef = ref(db_admin);
       onValue(carparkRef, (snapshot) => {
         try {
           const data = snapshot.val();
@@ -97,7 +98,7 @@ const Dashboard = () => {
 
     return () => {
         // Unsubscribe from Firebase listener when component unmounts
-        const carparkRef = ref(db);
+        const carparkRef = ref(db_admin);
         onValue(carparkRef, null);
         clearInterval(interval); // Clear interval to stop fetching data
     };
@@ -109,7 +110,7 @@ const Dashboard = () => {
 // const [InputValues, setInputValues] = useState([]);
 
 // useEffect(() => {
-//   onValue(ref(db), (snapshot) => {
+//   onValue(ref(db_admin), (snapshot) => {
 //     setInputValues([]);
 //     const data = snapshot.val();
 //     if (data !== null) {

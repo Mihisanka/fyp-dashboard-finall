@@ -1,7 +1,7 @@
 // import React from "react";
 import CarItem from "./CarItem";
 import React, { useState, useEffect } from "react";
-import { db, ref, onValue } from "../../firebase.js";
+import { db_admin, ref, onValue } from "../../firebase.js";
 
 const RecommendCarCard = (props) => {
   // const { carName, retweet, imgUrl, rentPrice, percentage } = props.item;
@@ -9,7 +9,7 @@ const RecommendCarCard = (props) => {
   const [InputValues, setInputValues] = useState([]);
 
   useEffect(() => {
-    onValue(ref(db), (snapshot) => {
+    onValue(ref(db_admin), (snapshot) => {
       setInputValues([]);
       const data = snapshot.val();
       if (data !== null) {

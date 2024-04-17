@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, remove, set } from "firebase/database";
 import { getStorage } from "firebase/storage";
-// import firebase from "E:/4 year/FYP_SLTC/Codes/Dashboard/fyp-Dashborad-fainall/src/firebase.js";
+import { getFirestore } from "firebase/firestore";
 
+// First configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC2NQe9YIiKk8qipxrCxPlZkfNfogBePKI",
   authDomain: "car-parking-f9338.firebaseapp.com",
@@ -14,20 +15,31 @@ const firebaseConfig = {
   appId: "1:357367526616:web:461c0dca8edf47f36053ad",
   measurementId: "G-48XWCTC9Z1",
 };
-// Initialize Firebase app
-// Initialize Firebase app
-const app = initializeApp(firebaseConfig);
 
-// Get a reference to the Firebase Realtime Database service
-export const db = getDatabase();
+// Second configuration
+const firebaseConfig2 = {
+  apiKey: "AIzaSyDrAzuzBn7smq9wmY5LHiJ4GOFiQM99owQ",
+  authDomain: "fyp-user-user.firebaseapp.com",
+  projectId: "fyp-user-user",
+  storageBucket: "fyp-user-user.appspot.com",
+  messagingSenderId: "708508861343",
+  appId: "1:708508861343:web:3a3ee7951d24ef653433aa",
+};
 
-// Get a reference to the Firebase Storage service
-export const storage = getStorage(app);
+// Initialize Firebase apps
+const app1 = initializeApp(firebaseConfig); // Default app
+const app2 = initializeApp(firebaseConfig2, "app2");
+
+// Get references to the Firebase services
+export const db_admin = getDatabase(app1);
+export const db_user = getFirestore(app2); // Use Firestore for user database
+export const storage_admin = getStorage(app1);
+export const storage_user = getStorage(app2);
 
 // Define the 'off' function
 export const off = (ref, callback) => {
   // Implement your logic for unsubscribing from realtime updates here
 };
 
-// Export database functions
+// Export database functions for each app
 export { ref, onValue, set, remove };

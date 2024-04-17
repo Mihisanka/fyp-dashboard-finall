@@ -21,13 +21,18 @@ const navLinks = [
   // },
   {
     path: "/AddCarPark",
-    icon: "ri-admin-line", 
+    icon: "ri-admin-line",
     display: "Manage Parkings",
   },
   {
     path: "/Mapcomponent",
     icon: "ri-map-pin-line",
     display: "Map",
+  },
+  {
+    path: "/Bookings",
+    icon: "ri-map-pin-line",
+    display: "Bookings",
   },
 ];
 

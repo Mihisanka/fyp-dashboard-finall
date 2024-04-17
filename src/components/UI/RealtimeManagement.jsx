@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { db, ref, onValue, remove, set } from "../../firebase.js"; // Adjusted path for firebase.js
-import "../../styles/tableStyles.css";// Adjusted path for tableStyles.css
+import { db_admin, ref, onValue, remove, set } from "../../firebase.js"; // Adjusted path for firebase.js
+import "../../styles/tableStyles.css"; // Adjusted path for tableStyles.css
 import "@fortawesome/fontawesome-free/css/all.css";
 import "../../styles/modal.css";
 
@@ -11,44 +11,47 @@ const RealtimeManagement = () => {
     const [editedCarpark, setEditedCarpark] = useState(null);
     const [updatedCarparkData, setUpdatedCarparkData] = useState({
         // Add latitude and longitude fields to the initial state
-        latitude: '',
-        longitude: '',
+        latitude: "",
+        longitude: "",
     });
 
     useEffect(() => {
         const fetchData = () => {
-            const carparkRef = ref(db);
-            onValue(carparkRef, (snapshot) => {
-                try {
-                    const data = snapshot.val();
-                    console.log("Fetched Data:", data);
-                    if (data) {
-                        const carparkArray = Object.keys(data).map((key) => ({
-                            id: key,
-                            ...data[key],
-                            availability: data[key].availability === 'available' ? 'available' : 'unavailable',
-                        }));
-                        setCarparkData(carparkArray);
-                        setError(null);
-                    } else {
-                        setCarparkData([]);
-                        setError("No data available");
+            const carparkRef = ref(db_admin);
+            onValue(
+                carparkRef,
+                (snapshot) => {
+                    try {
+                        const data = snapshot.val();
+                        console.log("Fetched Data:", data);
+                        if (data) {
+                            const carparkArray = Object.keys(data).map((key) => ({
+                                id: key,
+                                ...data[key],
+                                availability: data[key].availability === "available" ? "available" : "unavailable",
+                            }));
+                            setCarparkData(carparkArray);
+                            setError(null);
+                        } else {
+                            setCarparkData([]);
+                            setError("No data available");
+                        }
+                    } catch (error) {
+                        setError(error.message);
                     }
-                } catch (error) {
+                },
+                (error) => {
                     setError(error.message);
                 }
-            }, (error) => {
-                setError(error.message);
-            });
+            );
         };
-
 
         fetchData();
 
         const interval = setInterval(fetchData, 5000);
 
         return () => {
-            const carparkRef = ref(db);
+            const carparkRef = ref(db_admin);
             onValue(carparkRef, null);
             clearInterval(interval);
         };
@@ -70,10 +73,10 @@ const RealtimeManagement = () => {
 
     const handleDelete = (id) => {
         console.log("Deleting ID:", id);
-        remove(ref(db, id))
+        remove(ref(db_admin, id))
             .then(() => {
                 console.log("Document successfully deleted!");
-                setCarparkData(prevData => prevData.filter(carpark => carpark.id !== id));
+                setCarparkData((prevData) => prevData.filter((carpark) => carpark.id !== id));
             })
             .catch((error) => {
                 console.error("Error removing document: ", error);
@@ -85,14 +88,12 @@ const RealtimeManagement = () => {
         e.stopPropagation();
         if (editedCarpark && Object.keys(updatedCarparkData).length > 0) {
             console.log("Updated Carpark Data:", updatedCarparkData);
-            const carparkRef = ref(db, id);
+            const carparkRef = ref(db_admin, id);
             set(carparkRef, updatedCarparkData) // Use set instead of update for partial updates
                 .then(() => {
                     console.log("Document successfully updated!");
-                    setCarparkData(prevData =>
-                        prevData.map(carpark =>
-                            carpark.id === editedCarpark.id ? { ...carpark, ...updatedCarparkData } : carpark
-                        )
+                    setCarparkData((prevData) =>
+                        prevData.map((carpark) => (carpark.id === editedCarpark.id ? { ...carpark, ...updatedCarparkData } : carpark))
                     );
                     setEditedCarpark(null);
                     setUpdatedCarparkData({});
@@ -104,7 +105,7 @@ const RealtimeManagement = () => {
                 });
         }
     };
-    
+
     return (
         <div className="park_item">
             {error && <div>Error: {error}</div>}
@@ -132,9 +133,7 @@ const RealtimeManagement = () => {
                             <td>{carpark.address}</td>
                             <td>{carpark.capacity}</td>
                             <td>{carpark.price}</td>
-                            <td className={carpark.availability === 'available' ? 'available' : 'unavailable'}>
-                                {carpark.availability}
-                            </td>
+                            <td className={carpark.availability === "available" ? "available" : "unavailable"}>{carpark.availability}</td>
                             <td>
                                 <i className="icon fas fa-edit" onClick={() => handleEdit(carpark)}></i>
                                 <i className="delete-icon fas fa-trash-alt" onClick={() => handleDelete(carpark.id)}></i>
@@ -146,7 +145,9 @@ const RealtimeManagement = () => {
             {editModalVisible && (
                 <div className="modal1">
                     <div className="modal1-content">
-                        <span className="close1" onClick={() => setEditModalVisible(false)}>&times;</span>
+                        <span className="close1" onClick={() => setEditModalVisible(false)}>
+                            &times;
+                        </span>
                         <h2>Edit Carpark</h2>
                         <div className="form-group">
                             <label htmlFor="carparkName">Carpark Name:</label>
@@ -227,7 +228,9 @@ const RealtimeManagement = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <button className="btn btn-primary" onClick={(e) => handleSaveChanges(editedCarpark.id, e)}>Save Changes</button>
+                        <button className="btn btn-primary" onClick={(e) => handleSaveChanges(editedCarpark.id, e)}>
+                            Save Changes
+                        </button>
                     </div>
                 </div>
             )}
