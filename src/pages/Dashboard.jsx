@@ -134,7 +134,7 @@ const Dashboard = () => {
 
         <div className="statics">
           <div className="stats">
-            <h3 className="stats__title">User Statistics</h3>
+            <h3 className="stats__title">Probabilities</h3>
             <MileChart />
           </div>
 

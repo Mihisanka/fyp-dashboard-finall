@@ -16,6 +16,7 @@ const Bookings = () => {
     });
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [updatedBooking, setUpdatedBooking] = useState({});
+    const [parkingSlotProbabilities, setParkingSlotProbabilities] = useState({});
 
     useEffect(() => {
         const fetchBookings = async () => {
@@ -25,10 +26,10 @@ const Bookings = () => {
                 const bookingList = [];
                 bookingSnapshot.forEach((doc) => {
                     const data = doc.data();
-                    bookingList.push({ id: doc.id, ...data });
+                    const bookingDate = data.BookingDate ? data.BookingDate.toDate() : null; // Convert Firestore Timestamp to Date object
+                    bookingList.push({ id: doc.id, ...data, BookingDate: bookingDate }); // Include BookingDate in the object
                 });
                 setBookingData(bookingList);
-                console.log("All Bookings:", bookingList);
                 setError(null);
             } catch (error) {
                 console.error("Error fetching bookings: ", error);
@@ -42,6 +43,29 @@ const Bookings = () => {
 
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        if (bookingData.length > 0) {
+            calculateParkingSlotProbabilities();
+        }
+    }, [bookingData]);
+
+    const calculateParkingSlotProbabilities = () => {
+        const slotCounts = bookingData.reduce((acc, booking) => {
+            acc[booking.ParkingSlotName] = (acc[booking.ParkingSlotName] || 0) + 1;
+            return acc;
+        }, {});
+
+        const totalBookings = bookingData.length;
+
+        const probabilities = Object.keys(slotCounts).reduce((acc, slot) => {
+            acc[slot] = ((slotCounts[slot] / totalBookings) * 100).toFixed(2) + "%";
+            return acc;
+        }, {});
+
+        setParkingSlotProbabilities(probabilities);
+        console.log("Parking Slot Probabilities:", probabilities);
+    };
 
     const handleDelete = async (id) => {
         try {
@@ -89,6 +113,18 @@ const Bookings = () => {
         setFilters({ ...filters, [name]: value });
     };
 
+    const formatDate = (timestamp) => {
+        if (!timestamp) return ""; // Handle null or undefined timestamp
+        const date = new Date(timestamp);
+        return date.toLocaleDateString();
+    };
+
+    const formatTime = (timestamp) => {
+        if (!timestamp) return ""; // Handle null or undefined timestamp
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString();
+    };
+
     const filteredBookings = bookingData.filter((booking) => {
         for (let key in filters) {
             if (booking[key] && booking[key].toLowerCase().includes(filters[key].toLowerCase())) {
@@ -132,8 +168,8 @@ const Bookings = () => {
                                 <td>{booking.ParkingSlotName}</td>
                                 <td>{booking.TimeSlot}</td>
                                 <td>{booking.VehicleNumber}</td>
-                                <td>{new Date(booking.BookingDate).toLocaleDateString()}</td>
-                                <td>{new Date(booking.BookingDate).toLocaleTimeString()}</td>
+                                <td>{formatDate(booking.BookingDate)}</td>
+                                <td>{formatTime(booking.BookingDate)}</td>
                                 <td>
                                     <i className="delete-icon fas fa-trash-alt" onClick={() => handleDelete(booking.id)}></i>
                                     <i className="edit-icon fas fa-edit" onClick={() => handleEdit(booking)}></i>
