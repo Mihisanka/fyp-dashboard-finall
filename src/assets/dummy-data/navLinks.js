@@ -34,6 +34,11 @@ const navLinks = [
     icon: "ri-map-pin-line",
     display: "Bookings",
   },
+  {
+    path: "/Report",
+    icon: "ri-settings-2-line",
+    display: "Report",
+  },
 ];
 
 export default navLinks;

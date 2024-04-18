@@ -6,7 +6,8 @@ import RecommendCarCard from "../components/UI/RecommendCarCard";
 import recommendCarsData from "../assets/dummy-data/recommendCars";
 import React, { useState, useEffect } from "react";
 import { db_admin, ref, onValue } from "../firebase.js";
-
+import MLIntegration from "./MLIntegration";
+import { db_user } from "../firebase.js";
 // import CarItem from "../components/UI/CarItem";
 
 
@@ -90,37 +91,37 @@ const Dashboard = () => {
       });
 
     };
-             
+
     fetchData();
 
     // Fetch data every 5 seconds
     const interval = setInterval(fetchData, 5000);
 
     return () => {
-        // Unsubscribe from Firebase listener when component unmounts
-        const carparkRef = ref(db_admin);
-        onValue(carparkRef, null);
-        clearInterval(interval); // Clear interval to stop fetching data
+      // Unsubscribe from Firebase listener when component unmounts
+      const carparkRef = ref(db_admin);
+      onValue(carparkRef, null);
+      clearInterval(interval); // Clear interval to stop fetching data
     };
   }, []);
 
 
-///available parking shoe in the dashboard 
+  ///available parking shoe in the dashboard 
 
-// const [InputValues, setInputValues] = useState([]);
+  // const [InputValues, setInputValues] = useState([]);
 
-// useEffect(() => {
-//   onValue(ref(db_admin), (snapshot) => {
-//     setInputValues([]);
-//     const data = snapshot.val();
-//     if (data !== null) {
-//       Object.values(data).map((carName) => {
-//         setInputValues((oldArray) => [...oldArray, carName]);
-//       });
-//     }
-//   });
-// }, [setInputValues]);
- 
+  // useEffect(() => {
+  //   onValue(ref(db_admin), (snapshot) => {
+  //     setInputValues([]);
+  //     const data = snapshot.val();
+  //     if (data !== null) {
+  //       Object.values(data).map((carName) => {
+  //         setInputValues((oldArray) => [...oldArray, carName]);
+  //       });
+  //     }
+  //   });
+  // }, [setInputValues]);
+
 
   return (
     <div className="dashboard">
@@ -148,12 +149,13 @@ const Dashboard = () => {
           {recommendCarsData.map((item) => (
             <RecommendCarCard item={item} key={item.id} />
           ))}
-          
-           {/* {InputValues?.map((car) => (
+
+          {/* {InputValues?.map((car) => (
             <CarItem item={car} key={car.carName} />
           ))} */}
         </div>
       </div>
+      <MLIntegration db_user={db_user} />
     </div>
   );
 };

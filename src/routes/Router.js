@@ -7,6 +7,7 @@ import Settings from "../pages/Settings";
 import AddCarPark from "../pages/AddCarPark";
 import Mapcomponent from "../pages/Mapcomponent";
 import Bookings from "../pages/Bookings";
+import Report from "../pages/Report"
 import Login from "../pages/Login";
 
 //import User from "./users/User";
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/AddCarPark" element={<AddCarPark />} />
         <Route path="/Mapcomponent" element={<Mapcomponent />} />
         <Route path="/Bookings" element={<Bookings />} />
+        <Route path="/Report" element={<Report />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </div>
