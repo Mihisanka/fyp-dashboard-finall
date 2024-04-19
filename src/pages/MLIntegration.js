@@ -11,7 +11,7 @@ import { db_user } from "../firebase.js";
 
 const MLIntegration = ({ db_user }) => {
   const [bookingData, setBookingData] = useState([]);
-  const [parkingSlotProbabilities, setParkingSlotProbabilities] = useState({});
+  const [parkingSlotRatings, setParkingSlotRatings] = useState({});
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -41,49 +41,51 @@ const MLIntegration = ({ db_user }) => {
 
   useEffect(() => {
     if (bookingData.length > 0) {
-      calculateParkingSlotProbabilities();
+      fetchRatings();
     }
   }, [bookingData]);
 
-  const calculateParkingSlotProbabilities = () => {
-    const slotCounts = bookingData.reduce((acc, booking) => {
-      acc[booking.ParkingSlotName] = (acc[booking.ParkingSlotName] || 0) + 1;
-      return acc;
-    }, {});
-
-    const totalBookings = bookingData.length;
-
-    const probabilities = Object.keys(slotCounts).reduce((acc, slot) => {
-      acc[slot] = ((slotCounts[slot] / totalBookings) * 100).toFixed(2) + "%";
-      return acc;
-    }, {});
-
-    setParkingSlotProbabilities(probabilities);
-    console.log("Parking Slot Probabilities:", probabilities);
-
-    // Update the report collection with the calculated probabilities
-    updateReportCollection(Object.entries(probabilities));
+  const fetchRatings = async () => {
+    try {
+      const ratingsCollection = collection(db_user, "ratings");
+      const ratingsSnapshot = await getDocs(ratingsCollection);
+      const ratingsData = {};
+      ratingsSnapshot.forEach((doc) => {
+        const data = doc.data();
+        const { ParkingSlotName, Rating } = data;
+        if (ParkingSlotName in ratingsData) {
+          ratingsData[ParkingSlotName].push(Rating);
+        } else {
+          ratingsData[ParkingSlotName] = [Rating];
+        }
+      });
+      setParkingSlotRatings(ratingsData);
+      updateReportCollection(ratingsData);
+    } catch (error) {
+      console.error("Error fetching ratings: ", error);
+    }
   };
 
-  const updateReportCollection = async (parkingSlotProbabilities) => {
+  const updateReportCollection = async (ratingsData) => {
     try {
-      for (const [parkingSlotName, probability] of parkingSlotProbabilities) {
+      for (const [parkingSlotName, ratings] of Object.entries(ratingsData)) {
         const reportRef = doc(db_user, "report", parkingSlotName);
         const reportSnapshot = await getDoc(reportRef);
 
+        const ratingsAsString = ratings.join(", "); // Convert ratings array to a string
+
+        const reportData = {
+          timestamp: new Date().toISOString(),
+          ratings: ratingsAsString,
+        };
+
         if (reportSnapshot.exists()) {
           // If the document already exists, update it
-          await updateDoc(reportRef, {
-            timestamp: new Date().toISOString(),
-            probability: probability,
-          });
+          await updateDoc(reportRef, reportData);
           console.log("Report collection updated successfully!");
         } else {
           // If the document doesn't exist, create it
-          await setDoc(reportRef, {
-            timestamp: new Date().toISOString(),
-            probability: probability,
-          });
+          await setDoc(reportRef, reportData);
           console.log("New report document created successfully!");
         }
       }
