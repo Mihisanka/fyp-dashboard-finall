@@ -224,7 +224,7 @@ import { db_user } from "../firebase.js";
 import { collection, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import "../styles/tableStyles.css";
 import "../styles/modal.css";
-import MLIntegration from "./MLIntegration";
+import MLIntegration from "../ML/MLIntegration.js";
 
 const Bookings = () => {
     const [bookingData, setBookingData] = useState([]);

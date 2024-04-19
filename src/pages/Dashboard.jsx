@@ -6,7 +6,7 @@ import RecommendCarCard from "../components/UI/RecommendCarCard";
 import recommendCarsData from "../assets/dummy-data/recommendCars";
 import React, { useState, useEffect } from "react";
 import { db_admin, ref, onValue } from "../firebase.js";
-import MLIntegration from "./MLIntegration";
+import MLIntegration from "../ML/MLIntegration.js";
 import { db_user } from "../firebase.js";
 // import CarItem from "../components/UI/CarItem";
 

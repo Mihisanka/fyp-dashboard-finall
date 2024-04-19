@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db_user } from '../firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
-import MLIntegration from './MLIntegration';
+import MLIntegration from '../ML/MLIntegration.js';
 import { PDFViewer } from '@react-pdf/renderer';
 import PDFDocument from '../assets/PDFDocument.js';
 

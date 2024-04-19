@@ -53,8 +53,7 @@ const RecommendCarCard = (props) => {
         </div>
       </div>
    
-
-<div className="AllParkings__list" >
+        <div className="AllParkings__list" >
           {InputValues?.map((car) => (
             <CarItem item={car} key={car.carName} />
           ))}
