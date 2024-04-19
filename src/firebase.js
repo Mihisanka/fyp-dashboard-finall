@@ -18,12 +18,19 @@ const firebaseConfig = {
 
 // Second configuration
 const firebaseConfig2 = {
-  apiKey: "AIzaSyDrAzuzBn7smq9wmY5LHiJ4GOFiQM99owQ",
-  authDomain: "fyp-user-user.firebaseapp.com",
-  projectId: "fyp-user-user",
-  storageBucket: "fyp-user-user.appspot.com",
-  messagingSenderId: "708508861343",
-  appId: "1:708508861343:web:3a3ee7951d24ef653433aa",
+  // apiKey: "AIzaSyDrAzuzBn7smq9wmY5LHiJ4GOFiQM99owQ",
+  // authDomain: "fyp-user-user.firebaseapp.com",
+  // projectId: "fyp-user-user",
+  // storageBucket: "fyp-user-user.appspot.com",
+  // messagingSenderId: "708508861343",
+  // appId: "1:708508861343:web:3a3ee7951d24ef653433aa",
+  apiKey: "AIzaSyDw_pxSr9SgcuCTUL7G09YUP5PwuYZaOxw",
+  authDomain: "fyp-user-use.firebaseapp.com",
+  projectId: "fyp-user-use",
+  storageBucket: "fyp-user-use.appspot.com",
+  messagingSenderId: "861234283293",
+  appId: "1:861234283293:web:188189f629b001e38e57f4",
+  measurementId: "G-XJRZBF70Q7"
 };
 
 // Initialize Firebase apps
