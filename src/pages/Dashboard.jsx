@@ -134,10 +134,11 @@ const Dashboard = () => {
         </div>
 
         <div className="statics">
-          <div className="stats">
-            <h3 className="stats__title">Probabilities</h3>
-            <MileChart />
-          </div>
+        <div className="stats" style={{ padding: "10px", width: "100%", height: "400px" }}>
+  <h3 className="stats__title">Probabilities</h3>
+  <MileChart />
+</div>
+
 
           <div className="stats">
             <h3 className="stats__title">Parking Statistics</h3>

@@ -56,7 +56,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
+  /* height: 450px; */
 }
 
 .stats {
