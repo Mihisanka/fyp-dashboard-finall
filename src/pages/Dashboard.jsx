@@ -31,7 +31,7 @@ const unavailableObj = {
 
 const distanceObj = {
   title: "Total Slots",
-  totalNumber: 1000,
+  totalNumber: 0,
   icon: "ri-timer-flash-line",
 };
 
@@ -39,7 +39,8 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [updatedCarObj, setUpdatedCarObj] = useState(carObj); // State to hold updated car object
   const [availableCount, setAvailableCount] = useState(0); // State to hold the count of available data
-  const [unavailableCount, setUnavailableCount] = useState(0); // State to hold the count of unavailable data
+  const [unavailableCount, setUnavailableCount] = useState(0);
+   // State to hold the count of unavailable data
 
   useEffect(() => {
     const fetchData = () => {
@@ -123,21 +124,21 @@ const Dashboard = () => {
   // }, [setInputValues]);
 
 
-  return (
-    <div className="dashboard">
-      <div className="dashboard__wrapper">
-        <div className="dashboard__cards">
-          <SingleCard item={updatedCarObj} /> {/* Render the updated carObj */}
-          <SingleCard item={{ ...availableObj, totalNumber: availableCount }} /> {/* Render the availableObj with updated count */}
-          <SingleCard item={{ ...unavailableObj, totalNumber: unavailableCount }} /> {/* Render the unavailableObj with updated count */}
-          <SingleCard item={distanceObj} />
-        </div>
+              return (
+                <div className="dashboard">
+                  <div className="dashboard__wrapper">
+                    <div className="dashboard__cards">
+                      <SingleCard item={updatedCarObj} /> {/* Render the updated carObj */}
+                      <SingleCard item={{ ...availableObj, totalNumber: availableCount }} /> {/* Render the availableObj with updated count */}
+                      <SingleCard item={{ ...unavailableObj, totalNumber: unavailableCount }} /> {/* Render the unavailableObj with updated count */}
+                      <SingleCard item={distanceObj} />
+                    </div>
 
-        <div className="statics">
-        <div className="stats" style={{ padding: "10px", width: "100%", height: "400px" }}>
-  <h3 className="stats__title">Probabilities</h3>
-  <MileChart />
-</div>
+                    <div className="statics">
+                    <div className="stats" style={{ padding: "10px", width: "100%", height: "400px" }}>
+              <h3 className="stats__title">Probabilities</h3>
+              <MileChart />
+            </div>
 
 
           <div className="stats">
