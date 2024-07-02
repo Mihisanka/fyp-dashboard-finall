@@ -1,13 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc,
-  setDoc,
-} from "firebase/firestore";
+import {collection,getDocs,doc,getDoc,updateDoc,setDoc,} from "firebase/firestore";
 import { db_user } from "../firebase.js";
 
 const MLIntegration = ({ db_user }) => {
@@ -40,6 +33,7 @@ const MLIntegration = ({ db_user }) => {
     return () => clearInterval(interval);
   }, [db_user]);
 
+  
   useEffect(() => {
     if (bookingData.length > 0) {
       calculateParkingSlotProbabilities();
@@ -93,7 +87,7 @@ const MLIntegration = ({ db_user }) => {
     }
   };
 
-  return null; // No need to render anything from this component
+  return null; 
 };
 
 export default MLIntegration;

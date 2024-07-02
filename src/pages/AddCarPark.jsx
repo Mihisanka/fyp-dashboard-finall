@@ -145,6 +145,7 @@ const AddCarPark = () => {
                                     <label>Capacity</label>
                                     <input type="text" name="Capacity" placeholder="10" onChange={handleChange} value={capacity} />
                                 </div>
+                                
                                 <div>
                                     <label>Price</label>
                                     <div className="formatted-price">Rs.{price}.00</div>

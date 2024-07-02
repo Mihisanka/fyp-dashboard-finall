@@ -7,7 +7,7 @@ import { MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBBtn } from '
 
 const Mapcomponent = () => {
   const [carparkData, setCarparkData] = useState([]);
-  const [ setError] = useState(null);//error,
+  const [setError] = useState(null);//error,
   const [filter, setFilter] = useState('all');
   const [showModal, setShowModal] = useState(true);
 
@@ -71,8 +71,9 @@ const Mapcomponent = () => {
                   <h2>{marker.carparkName}</h2>
                   <p style={{ color: marker.availability === 'available' ? 'green' : 'red' }}>Availability : {marker.availability.charAt(0).toUpperCase() + marker.availability.slice(1)}</p>
                   <p>Price : Rs.{marker.price}.00</p>
-                  <p>Latitude: {latitude}</p>
-                  <p>Longitude: {longitude}</p>
+                  <p>Total Slots: {latitude}</p>
+                  <p>Re Slots: {longitude}</p>
+                  <p>Distance : {longitude}</p>
                 </div>
               </Popup>
             </Marker>
@@ -105,7 +106,7 @@ const Mapcomponent = () => {
           <div className="filter form-group">
             <label htmlFor="filter" className="label">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                <path d="M2.464 3.879A.25.25 0 0 0 2.236 4h11.528a.25.25 0 0 0-.228.379l-4.75 7.5a.5.5 0 0 1-.854 0l-4.75-7.5zm.787-.342a1 1 0 0 1 1.702 0l4.75 7.5a1 1 0 0 1-.854 1.5H3.605a1 1 0 0 1-.854-1.5l4.75-7.5a1 1 0 0 1 0-1.116zM5.056 5.75a.75.75 0 0 1 1.342 0l2 4a.75.75 0 0 1-1.342.75l-2-4a.75.75 0 0 1 0-.75z"/>
+                <path d="M2.464 3.879A.25.25 0 0 0 2.236 4h11.528a.25.25 0 0 0-.228.379l-4.75 7.5a.5.5 0 0 1-.854 0l-4.75-7.5zm.787-.342a1 1 0 0 1 1.702 0l4.75 7.5a1 1 0 0 1-.854 1.5H3.605a1 1 0 0 1-.854-1.5l4.75-7.5a1 1 0 0 1 0-1.116zM5.056 5.75a.75.75 0 0 1 1.342 0l2 4a.75.75 0 0 1-1.342.75l-2-4a.75.75 0 0 1 0-.75z" />
               </svg>
               Filter by Availability :
             </label>
