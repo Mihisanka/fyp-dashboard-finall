@@ -12,7 +12,7 @@ import { db_user } from "../firebase.js";
 
 
 const carObj = {
-  title: "Total Parkings",
+  title: "Available Slots",
   totalNumber: 0, // Initialize with 0
   icon: "ri-police-car-line",
 };
@@ -40,6 +40,7 @@ const Dashboard = () => {
   const [updatedCarObj, setUpdatedCarObj] = useState(carObj); // State to hold updated car object
   const [availableCount, setAvailableCount] = useState(0); // State to hold the count of available data
   const [unavailableCount, setUnavailableCount] = useState(0);
+  const [totalParking, settotalParking] = useState(0);
    // State to hold the count of unavailable data
 
   useEffect(() => {
@@ -52,7 +53,8 @@ const Dashboard = () => {
           if (data) {
             let totalCapacity = 0; // Initialize total capacity
             let availableDataCount = 0; // Initialize available data count
-            let unavailableDataCount = 0; // Initialize unavailable data count
+            let unavailableDataCount = 0; 
+            let totalParking = 0;// Initialize unavailable data count
 
             // Loop through each UUID
             Object.values(data).forEach((carpark) => {

@@ -19,13 +19,23 @@ const firebaseConfig = {
 
 // Second configuration
 const firebaseConfig2 = {
-  apiKey: "AIzaSyDw_pxSr9SgcuCTUL7G09YUP5PwuYZaOxw",
-  authDomain: "fyp-user-use.firebaseapp.com",
-  projectId: "fyp-user-use",
-  storageBucket: "fyp-user-use.appspot.com",
-  messagingSenderId: "861234283293",
-  appId: "1:861234283293:web:188189f629b001e38e57f4",
-  measurementId: "G-XJRZBF70Q7",
+  apiKey: "AIzaSyCpkZHS43f4Pb7AQyudXqPl6y5zZSprlOM",
+  authDomain: "user-new-99fd6.firebaseapp.com",
+  projectId: "user-new-99fd6",
+  storageBucket: "user-new-99fd6.appspot.com",
+  messagingSenderId: "316646780081",
+  appId: "1:316646780081:web:6b17d683a39d9b3a5c4690",
+  measurementId: "G-JJ0BC0LDED"
+
+  ///////////////////////////////////////////////////////////////
+  // apiKey: "AIzaSyDw_pxSr9SgcuCTUL7G09YUP5PwuYZaOxw",
+  // authDomain: "fyp-user-use.firebaseapp.com",
+  // projectId: "fyp-user-use",
+  // storageBucket: "fyp-user-use.appspot.com",
+  // messagingSenderId: "861234283293",
+  // appId: "1:861234283293:web:188189f629b001e38e57f4",
+  // measurementId: "G-XJRZBF70Q7",
+  ///////////////////////////////////////////////////////////////
   // apiKey: "AIzaSyDrAzuzBn7smq9wmY5LHiJ4GOFiQM99owQ",
   // authDomain: "fyp-user-user.firebaseapp.com",
   // projectId: "fyp-user-user",
